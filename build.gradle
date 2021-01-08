@@ -1,0 +1,28 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+  repositories {
+    maven {
+      url "https://storage.googleapis.com/r8-releases/raw/master"
+    }
+    google()
+    jcenter()
+  }
+  dependencies {
+    // comment the following line to use the default R8 implementation
+    classpath 'com.android.tools:r8:a79524355675e935a375e54bec7809fd9aa60616'  // Must be before the Gradle Plugin for Android.
+    // can use the following line to use another R8 commit branch
+    //classpath 'com.android.tools:r8:a098ba26f0f22926039e57793d0172c87162eab6'  // Must be before the Gradle Plugin for Android.
+    classpath "com.android.tools.build:gradle:4.1.1"
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
