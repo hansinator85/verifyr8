@@ -27,6 +27,26 @@
 -whyareyoukeeping class com.example.verifyr8.log.Logger {
   public void debug(...);
 }
+
+# add new rules as suggested by https://issuetracker.google.com/issues/174285670#comment19
+# -->
+-assumenosideeffects class java.lang.StringBuilder {
+  void <init>(...);
+}
+
+-assumevalues class com.example.verifyr8.MainActivity {
+  private static final com.example.verifyr8.log.Logger logger return 1;
+}
+
+-assumenosideeffects class android.os.Bundle {
+  java.lang.String toString();
+}
+
+-assumenosideeffects class com.example.verifyr8.log.Logger {
+  public static com.example.verifyr8.log.Logger getLogger(...);
+}
+# <--
+
 -assumenosideeffects class com.example.verifyr8.log.Logger {
     public void warn(...);
     public void info(...);
