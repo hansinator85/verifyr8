@@ -34,12 +34,12 @@
   void <init>(...);
 }
 
--assumevalues class com.example.verifyr8.MainActivity {
+-assumevalues class * {
   private static final com.example.verifyr8.log.Logger logger return 1;
 }
 
--assumenosideeffects class android.os.Bundle {
-  java.lang.String toString();
+-assumenosideeffects class java.util.Objects {
+  public static java.lang.String toString(java.lang.Object);
 }
 
 -assumenosideeffects class com.example.verifyr8.log.Logger {
