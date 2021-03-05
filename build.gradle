@@ -12,7 +12,7 @@ buildscript {
     classpath 'com.android.tools:r8:a79524355675e935a375e54bec7809fd9aa60616'  // Must be before the Gradle Plugin for Android.
     // can use the following line to use another R8 commit branch
     //classpath 'com.android.tools:r8:a098ba26f0f22926039e57793d0172c87162eab6'  // Must be before the Gradle Plugin for Android.
-    classpath "com.android.tools.build:gradle:4.1.1"
+    classpath "com.android.tools.build:gradle:4.1.2"
   }
 }
 
