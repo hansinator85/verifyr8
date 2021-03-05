@@ -19,6 +19,8 @@ import android.util.Log;
 
 import com.example.verifyr8.log.Logger;
 
+import java.util.Objects;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -35,6 +37,21 @@ public class MainActivity extends AppCompatActivity
     logger.debug("OWNLOGGER::MainActivity::onCreate:: will stay due to StringBuilder with variable: " + savedInstanceState);
     Log.d("MainActivity::onCreate::", "will be removed");
     Log.d("MainActivity::onCreate::", "will stay due to StringBuilder with variable: " + savedInstanceState);
+
+    // error log should keep intact
+    logger.error("OWNLOGGER::MainActivity::onCreate::error:: will stay as error log should keep with variable: " + savedInstanceState);
+
+    // try if "real"-usage of StringBuilder-constructor and Bundle.toString() will be detected
+    Bundle anotherBundle = new Bundle();
+    anotherBundle.putString("someKey", "someValue");
+    String bundleString = anotherBundle.toString();
+    String usedBundleString = bundleString.replace("some", "useful");
+    anotherBundle.putString("replacedValue", usedBundleString);
+    anotherBundle.putString("stringbuilderValue", "original value: " + bundleString + " with replaced value: " + usedBundleString);
+    onSaveInstanceState(anotherBundle);
+    logger.error("OWNLOGGER::MainActivity::onCreate::error:: show another bundle: " + anotherBundle);
+    logger.error(Objects.toString(anotherBundle));
+
     // include the following line to inspect the behavior with an additional class where no auto-generated proguard rules should be applied.
     // new SomeOtherClass(savedInstanceState);
   }
